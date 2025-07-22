@@ -1,0 +1,44 @@
+* To get or reached all nodes
+* Traversal
+
+
+
+BFS [Breadth First Search or Level Order traversing]
+ - equidistance nodes basis traversal = BFS
+ - Iterative approach
+
+Rahul-> Source node
+
+Rahul starting node
+X=> 1 distance
+Y=> 1 distance
+Z=> 1 distance
+A=> 1 distance
+
+rahul friends girlfriend and failed to make girlfriend
+X'=> 2 distance
+Y'=> 2 distance
+Z'=> 2 distance
+A'=> 2 distance
+
+
+rahul friends girlfriend friend
+P => 3 distance
+
+source node => 1 distance => 2 distance => 3 distance
+
+This type of traversal is called BFS [ Breadth First Search ]
+
+
+
+DFS [Depth First Search]
+ - Direction Based
+ - Recursive approach
+
+Rahul -> X1  -> X2 => failed to find girlfriend
+Rahul -> Q -> Q1 => failed to find girlfriend
+
+Traversing into depth of nodes
+
+
+

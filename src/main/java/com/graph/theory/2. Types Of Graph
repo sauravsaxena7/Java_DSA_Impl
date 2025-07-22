@@ -1,0 +1,79 @@
+* Directed Graph => A--------->B, A connected to B only but B is not Connected to A.
+  - Direction of arrow is important, it is singly direction from one not to another node
+
+* Un-Directed [Bi-Directional] Graph=>  A---------B, A connected to B and B connected to A.
+
+
+* Weighted Graph
+  - Division On the basis of weight.
+  - Delhi ------- Jaipur
+    |         4      |
+    |                |
+10  |                | 5     ====> Weighted Graph
+    |                |
+    |                |
+   Mumbai----------Agra
+             12
+
+
+* Un-Weighted Graph
+
+
+* Completed Graph
+  - Every particular node fully connected to each other.
+  - Every node id connected to every other node of graph
+
+  A--------B
+  |        |
+  |        |
+  |_______ C
+
+
+
+*Disconnected Graph [Forest Type ]
+
+  A--------B
+  |        |     D ----- E
+  |        |     Component 2
+  |_______ C
+  Component 1
+
+
+* Euler Graph
+  - Degree of each node is even
+  - Degree is no. of connection of each node
+  - In-degree and Out Degree -> Topological Sort - > kahn's ALgo
+      A------ >B
+      ^        ^
+      |        | ---> This is Euler Graph
+      |_______ C
+  -  A = 0 degree
+  -  B = 0
+  -  C = 2
+
+* Hamiltonian Graph
+  - You start from a node, and visit each node in-between only once while traversing.
+  - After visited every node for only once, comes to that node, where you started.
+  - Of-course you are going to visit the start node for two times only.
+  - Making close loop.
+      A<-------B
+      |        ^
+      |        | ---> This is Hamiltonian Cycle
+      |------> C
+
+* Pseudo Graph
+
+* Null Graph
+
+* Cyclic Graph
+  A--------B
+  |close   |  it's forming a close loop
+  |loop    |
+  |_______ C
+
+
+* Acyclic Graph
+    A------ >B
+    ^        ^  it's not forming a close loop
+    |        |
+    |_______ C

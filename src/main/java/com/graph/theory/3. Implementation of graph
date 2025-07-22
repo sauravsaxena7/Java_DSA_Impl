@@ -1,0 +1,83 @@
+* There is not in-built implementation graph.
+
+Famous Methods to implement Graph .
+
+1. Adjacency Matrix
+   - 1 is connected to 2
+   - Row 'i' is connected to column 'j'
+   - i to j
+
+    1 -------------- 2
+    |                |
+    |                |
+    |                |     ====> un-directed Graph
+    |                |
+    |                |
+    4 -------------- 3
+
+    1   2   3   4
+
+1   0   1   0   1
+
+2   1   0   1   0
+
+3   0   1   0   1
+
+4   1   0   1   0
+
+
+    1 ------------> 2
+                    ^
+                    |
+                    |     ====> directed Graph
+                    |
+                    |
+    4 ------------> 3
+
+    1   2   3   4
+
+1   0   1   0   0
+
+2   0   0   0   0
+
+3   0   1   0   0
+
+4   0   0   1   0
+
+* Limitations of Adjacency Matrix.
+  - Node -> 1,2,3,4 then it's easy to maintain in 2-d array with index, i,j
+  - But what if Node -> -1, -2, -3, -4
+    or Delhi, mumbai, patna , ranchi
+    or A, B, C
+
+
+
+
+2. Adjacency List
+
+    1 -------------- 2
+    |                |
+    |                |
+    |                |     ====> un-directed Graph
+    |                |
+    |                |
+    4 -------------- 3
+
+
+  KEY
+  Node -> Neighbours -> Vector/Array
+
+  1 => 2, 4
+  2 => 3, 1
+  3 => 2, 4
+  4 => 3, 1
+
+Generally In question we have edge list,
+edge : [ [A,B], [B,C], [C,D], [A,C] ]
+
+Graph => edge list / Ways => READ => Adjacency List
+
+
+
+
+

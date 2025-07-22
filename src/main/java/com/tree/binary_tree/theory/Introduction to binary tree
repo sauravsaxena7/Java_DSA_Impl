@@ -1,0 +1,202 @@
+* Binary Tree
+* Each node can have only at most 2 children
+* Maximum no of node at level n is 2^n.
+
+         o ------------------ 2^0 = 1 node at level 0
+        /    \
+       o       o ------------ 2^1 = 2 node at level 1
+     /   \    /  \
+   o       o  o   o --------- 2^2 = 4 node at level 2
+           |
+           |
+           |
+           | ----------- at level n maximum no of node = 2^n
+
+* Maximum no of node at height h is
+  2^0 + 2^1 + 2^2 ------ 2^h
+  0 + 2  + 4 ------ 2^h
+  Applying GP => 2^h+1-1
+
+* Minimum no of node at height h is h+1
+                o
+               /
+              o
+             /
+            o
+  - at h = 0 => no of node is 1
+  - at h = 1 => no of node is 2
+  - at h = 2 => no of node is 3
+
+* if maximum no of node is given how could you find height of binary tree
+  let's min no. of nodes is n
+
+  heigth of binary tree is 2^h+1-1
+
+  n  = 2^h+1-1
+  n+1 = 2^h+1
+
+  taking log base 2 both side
+
+  log(n+1) base 2 = log(2^h+1) base 2
+
+  log(n+1) base 2 = h+1
+
+  h= [log(n+1) base 2 - 1]
+
+* if min no of node is give at height h
+  n=h+1
+  h=n-1 so, height will be n-1
+
+ * max height at node n is h = (h-1)
+  * min height at node n is h = [log(n+1) base 2 - 1]
+
+
+* Types of Binary tree
+
+1. Full/proper/strict
+2. Complete
+3. Perfect
+4. Degenerate
+
+
+1.  Full/proper/strict Binary tree
+- each node have either 0 or 2 child
+- each node contain exactly 2 children except leaf node
+          A
+        /   \
+      B       C
+     / \     / \
+    D   E   F   G
+             \
+              H
+             / \
+            I   J
+
+No. of leaf nodes = No. of internal node + 1;
+
+Explanation:
+Internal nodes = A, B, C, F, H → ✅ Total = 5
+
+Leaf nodes = D, E, G, I, J → ✅ Total = 6
+
+All internal nodes have exactly 2 children → ✅ Full binary tree
+
+Total nodes = 11 → ✅ Correct
+
+Max nodes at height h=> n= 2^(h+1)-1
+Min nodes at height=>
+          A
+         / \
+        B   L1
+       / \
+      C   L2
+     / \
+    D   L3
+
+Nodes at height 0 let's height h:=> 2 * 0 + 1 = 1 where height h=0
+
+Nodes at height 1 let's height h:=> 2 * 1 + 1 = 3 where height h=1
+
+Nodes at height 2 let's height h:=> 2 * 2 + 1 = 5 where height h=2
+
+Nodes at height 3 let's height h:=> 2 * 3 + 1 = 7 where height h=3
+
+so, no. of node n= 2 * h + 1;
+
+maximum height of binary tree at minimum no. node n
+=> 2*h+1=n
+=> n-1 = 2*h
+=> h= (n-1)/2;
+
+Minimum height h at maximum no of node n.
+h = [log(n+1) base 2 - 1]
+
+
+
+2. Complete binary tree
+- Completely filled at every level except last level
+- The last level has nodes as left as possible
+
+          A
+        /   \
+      B       C  ======> Not a complete binary tree
+     / \     / \
+    D   E   F   G
+             \
+              H
+             / \
+            I   J
+
+
+          A
+        /   \
+      B       C  ======> complete binary tree
+     / \     / \
+    D   E   F   G
+   /
+  H
+ /  \
+ I   j
+
+ * Maximum no of node at height h is => n= 2^(h+1)-1
+ * Minimum no of node at height h is => n= 2^h
+
+           A
+         /   \
+       B       C  ======> complete binary tree
+      / \     / \
+     D   E   F   G
+    /
+   H
+  /  \
+  I   j
+  Nodes at height 0 let's height h:=> 2^0 = 1 where height h=0
+
+  Nodes at height 1 let's height h:=> 2^1 = 2 where height h=1
+
+  Nodes at height 2 let's height h:=> 2^2 = 4 where height h=2
+
+  Nodes at height 3 let's height h:=> 2^3 = 8 where height h=3
+
+  Nodes at height 3 let's height h:=> 2^4 = 16 where height h=4
+
+
+* maximum height of binary tree at minimum no. node n
+ => n=2^h
+ =>h =log n base2
+
+ Minimum height h at maximum no of node n.
+ h = [log(n+1) base 2 - 1]
+
+
+
+3. Perfect Binary tree
+- All internal nodes have 2 children
+- & All leaves are at same level
+
+           A
+         /   \
+       B       C  ======> Perfect binary tree
+      / \     / \
+     D   E   F   G
+
+4. Degenerate Binary tree
+- all internal nodes have 2 children
+- all leaves are at same level
+
+           A
+         /
+       B  ======> Degenerate binary tree or left skied tree
+      /
+     D
+
+
+     A
+      \
+       B
+        \
+         C ======> Degenerate binary tree or right skied tree
+          \
+           D
+            \
+             E

@@ -1,0 +1,38 @@
+0. What are graphs ?
+1. Types of graphs
+2. How to implement ?
+3. Traversing a graph
+   - BFS + Question
+   - DFS + Question
+4. Cycle Detection
+5. Topological Sorting
+   - Kahn's Algo
+   - DFS based
+6. Flood Fill
+7. Connected Components
+8. Shortest Path Algorithm
+   - Single Source (# # Algorithms ) -> Dijkstra's algorithm
+   - Multi Source
+9. DSU - Disjoint Union Set
+10 MST - Minimum Spanning Tree
+       -> Prim's + Q
+       -> Kruksal + Q
+11. Hamiltonian Path - TSP [Travelling Sales Man Problem ]
+12. Graph Colouring 0-1 Colouring problem
+13. SCC - Strongly Connected Component
+    - KOSARAJU Algo
+14. Network Flow
+    - Ford Fulkerson
+    - Edmonds Karp
+
+Application:
+#Social Network like
+
+me -> ABC----->
+       ^
+       |
+       X---> Z
+
+#Goole Maps
+
+#File System
