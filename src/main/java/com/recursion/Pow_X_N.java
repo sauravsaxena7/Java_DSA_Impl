@@ -30,57 +30,34 @@ package com.recursion;
 
 public class Pow_X_N {
 
-    private static double powerTo(double x, int n,int flag) {
 
-        if(n==0){
-            return x;
+    private static double powerTo(double x, int n) {
+
+        // Base case
+        if (n == 0) return 1.0;
+
+        double half = powerTo(x, n / 2);
+
+        if (n % 2 == 0) {
+            return half * half;
+        } else {
+            return half * half * x;
         }
-        System.out.println("Flag::: "+flag+" x::: "+x);
-        if(flag==-1){
-            x=1/x*(powerTo(x,n/2,flag));
-        }else{
-            double res=powerTo(x,n/2,flag) ;
-            x=x*res;
-            System.out.println("n::"+n+" Flag::: "+flag+" x::: "+x+" res:: "+res);
-        }
-
-        //x=x*x;
-
-        return x;
-
     }
-
 
     public static double myPow(double x, int n) {
-
-        int flag = 1;
-        if(n<0) flag=-1;
-        double result = powerTo(x,Math.abs(n),flag);
-
-        System.out.println("result: "+result);
-
-
-//        if(n%2==0){
-//            if(flag==-1){
-//                result= (1/(result*result));
-//            }else{
-//                result=result*result;
-//            }
-//
-//        }else{
-//            if(flag==-1){
-//                result=1/(result*result*x);
-//            }else{
-//                result=result*result*x;
-//            }
-//        }
-        return result;
+        if(n<0){
+            n=-n;
+            x=1/x;
+        }
+        return powerTo(x,Math.abs(n));
 
     }
+
 
 
 
     public static void main(String [] args){
-        System.out.println(myPow(2.0,6));
+        System.out.println(myPow(2.0,8));
     }
 }

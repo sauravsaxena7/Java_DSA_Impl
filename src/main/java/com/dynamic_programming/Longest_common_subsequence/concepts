@@ -1,0 +1,111 @@
+
+
+
+ Given two strings text1 and text2, return the length of their longest common subsequence.
+ If there is no common subsequence, return 0.
+
+ A subsequence of a string is a new string generated from the original string with some characters (can be none) deleted
+ without changing the relative order of the remaining characters.
+
+ For example, "ace" is a subsequence of "abcde".
+ A common subsequence of two strings is a subsequence that is common to both strings.
+
+
+
+ Example 1:
+
+ Input: text1 = "abcde", text2 = "ace"
+ Output: 3
+ Explanation: The longest common subsequence is "ace" and its length is 3.
+ Example 2:
+
+ Input: text1 = "abc", text2 = "abc"
+ Output: 3
+ Explanation: The longest common subsequence is "abc" and its length is 3.
+ Example 3:
+
+ Input: text1 = "abc", text2 = "def"
+ Output: 0
+ Explanation: There is no such common subsequence, so the result is 0.
+
+
+ Constraints:
+
+ 1 <= text1.length, text2.length <= 1000
+ text1 and text2 consist of only lowercase English characters.
+
+
+
+ acedflgptpabcdefg
+ lgptabcdefg
+
+ ezupkr
+ ubmrapg
+
+ ylqpejqbalahwr
+ yrkzavgdmdgtqpg
+
+ mhunuzqrkzsnidwbun
+ szulspmhwpazoxijwbq
+
+
+
+
+recursive approach
+input :
+abcdefg
+ace
+
+first we traverse both string from last index,
+1. base condition
+for recursive approach we need make sure to small the
+input while recursive function call
+
+x ->> length = m
+y ->> length = n
+
+in string we can decrement m,n tend to 0 only, at -1 , nothing make sense as string index
+base condition:
+*. m==0 || n==0 => so longest common subsequence for empty string is zero
+*. x="abc", y="", so lcs = 0 length only
+*. x="", y="def", so lcs = 0 length only
+
+2. choices diagram
+
+LCS(7, 3): "abcdefg", "ace" → g vs e ❌
+├── LCS(6, 3): "abcdef", "ace" → f vs e ❌
+│   ├── LCS(5, 3): "abcde", "ace" → e vs e ✅
+│   │   └── 1 + LCS(4, 2): "abcd", "ac" → d vs c ❌
+│   │       ├── LCS(3, 2): "abc", "ac" → c vs c ✅
+│   │       │   └── 1 + LCS(2, 1): "ab", "a" → b vs a ❌
+│   │       │       ├── LCS(1, 1): "a", "a" → a vs a ✅
+│   │       │       │   └── 1 + LCS(0, 0): "", "" → base → 0 → result = 1
+│   │       │       └── LCS(2, 0): "ab", "" → base → 0
+│   │       │   → max(1, 0) = 1 → +1 = 2
+│   │       └── LCS(4, 1): "abcd", "a" → d vs a ❌
+│   │           ├── LCS(3, 1): "abc", "a" → c vs a ❌
+│   │           │   ├── LCS(2, 1): "ab", "a" → b vs a ❌
+│   │           │   │   ├── LCS(1, 1): "a", "a" → a vs a ✅ → 1
+│   │           │   │   └── LCS(2, 0): "ab", "" → 0
+│   │           │   └── LCS(2, 0): "ab", "" → 0
+│   │           └── LCS(3, 0): "abc", "" → 0
+│   │       → max(2, 1) = 2 → +1 = 3
+│   └── LCS(5, 2): "abcde", "ac" → e vs c ❌
+│       ├── LCS(4, 2): "abcd", "ac" → already computed → 2
+│       └── LCS(5, 1): "abcde", "a" → e vs a ❌
+│           ├── LCS(4, 1): "abcd", "a" → already computed → 1
+│           └── LCS(5, 0): "abcde", "" → 0
+│       → max(2, 1) = 2
+└── LCS(7, 2): "abcdefg", "ac" → g vs c ❌
+    ├── LCS(6, 2): "abcdef", "ac" → f vs c ❌
+    │   ├── LCS(5, 2): already computed → 2
+    │   └── LCS(6, 1): "abcdef", "a" → f vs a ❌
+    │       ├── LCS(5, 1): already computed → 1
+    │       └── LCS(6, 0): "abcdef", "" → 0
+    └── LCS(7, 1): "abcdefg", "a" → g vs a ❌
+        ├── LCS(6, 1): already computed → 1
+        └── LCS(7, 0): "abcdefg", "" → 0
+
+
+
+

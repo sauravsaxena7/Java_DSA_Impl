@@ -58,43 +58,6 @@ import java.util.List;
 
 
 
-class Vehicle{
-    public Integer getNumberOfWheels(){
-        return 2;
-    }
-
-
-}
-
-class EngineVehicle extends Vehicle{
-    public Boolean hasEngine(){
-        return true;
-    }
-
-}
-
-class MotorCycle extends EngineVehicle{
-
-    @Override
-    public Boolean hasEngine() {
-        return super.hasEngine();
-    }
-}
-
-class Car extends EngineVehicle{
-
-    @Override
-    public Integer getNumberOfWheels() {
-        return 4;
-    }
-
-}
-
-class BiCycle extends Vehicle{
-}
-
-
-
 public class CreateTargetArrayInGivenOrder {
 
     public int[] createTargetArray(int[] nums, int[] index) {
@@ -138,15 +101,8 @@ public class CreateTargetArrayInGivenOrder {
         int[] index = Arrays.stream(line.trim().split("\\s+"))
                 .mapToInt(Integer::parseInt)
                 .toArray();
-        //System.out.println(Arrays.toString(new CreateTargetArrayInGivenOrder().createTargetArray(nums, index)));
+        System.out.println(Arrays.toString(new CreateTargetArrayInGivenOrder().createTargetArray(nums, index)));
 
-        List<Vehicle> vehicleList = new ArrayList<>();
 
-        vehicleList.add(new MotorCycle());
-        vehicleList.add(new Car());
-
-        for(Vehicle vehicle: vehicleList){
-            System.out.println(vehicle.getNumberOfWheels());
-        }
     }
 }

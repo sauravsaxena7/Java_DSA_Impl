@@ -1,0 +1,254 @@
+Heap
+->complete binary tree or almost complete binary tree
+-> it is a tree based data structure
+-> all level are completely filled, except last level
+->and at last level all keys are present as in left as possible
+
+Yes, in a heap implemented using an array, it is possible to use a
+starting index of 0.
+While some resources or implementations might choose to leave
+index 0 unused and start the heap elements from index 1 for
+simpler parent/child index calculations, it is not a requirement.
+
+If the root of the heap is placed at index 0:
+The left child of a node at index i will be at (2 * i) + 1.
+The right child of a node at index i will be at (2 * i) + 2.
+The parent of a node at index i can be found at (i - 1) / 2 (integer division).
+These formulas are slightly different from those used when starting the heap at index 1, but they are equally valid and commonly used in implementations.
+
+
+two types of heap
+1. Max heap
+2. mean heap
+
+Max heap
+=>for every node i the value of node is less than or equal to
+it's parent value A[paren(I)] >= A[i], except root node
+
+                                 70
+                            /           \
+                          50              40
+                       /     \          /     \
+                      45      35       39       16
+                    /    \
+                   10     9
+
+
+70 50 40 45 35 39 16 10 9
+
+let's insert 60 in max heap
+
+                                 70
+                            /           \
+                          50               40
+                       /     \           /     \
+                      45       35       39       16
+                    /    \    /
+                   10     9   60 <- last inserted elements
+
+  0  1  2  3  4  5  6  7 8  9
+ 70 50 40 45 35 39 16 10 9 60 <- last inserted elements
+
+ 60 at index 9 find it's parent floor value of (index - 1) / 2 => 8/2 = 4=parent
+
+if(parent<child)
+swap(parent,child)
+index = parent
+again check for it's parent till we reach root node
+
+                                 70
+                            /           \
+                          50               40
+                       /     \           /     \
+                      45       60       39       16
+                    /    \    /
+                   10     9   35 <- last inserted elements
+
+ 0  1  2  3  4  5  6  7  8  9
+ 70 50 40 45 60 39 16 10 9 35
+ index=4 , parent =>(index - 1) / 2 => 3/2=2 = 1
+ if(parent <child)
+ swap(parent,child)
+ child =parent
+again check for it's parent till we reach root node
+
+                                 70
+                            /           \
+                          60               40
+                       /     \           /     \
+                      45       50       39       16
+                    /    \    /
+                   10     9   35 <- last inserted elements
+
+ 0  1  2  3  4  5  6  7  8  9
+ 70 60 40 45 50 39 16 10 9 35
+
+now index = 1 => parent => (i-1)/2 => (1-1)/2 =0 and
+parent is greater than it's child
+
+now insert 5
+
+                                 70
+                            /           \
+                          60               40
+                       /     \           /     \
+                      45       50       39       16
+                    /    \    /   \
+                   10     9   35   5 <- last inserted elements
+
+ 0  1  2  3  4  5  6  7  8  9 10
+ 70 60 40 45 50 39 16 10 9 35 5
+no swapping is required
+
+conclusion=> Insertion operation require O(log n)
+=>maximum comparison require up to the height of the tree
+and height of the tree is log(n)
+Algo:
+insertHeap(Arr, n, value)
+{
+  n=n+1;
+  Arr[n] = value;
+  i = n;
+  while i>= 0
+  {
+     parent = (i-1)/2;
+     if(Arr[parent] > Arr[index])
+     {
+        swap(Arr[parent] ,Arr[index])
+        index=parent;
+     }else{
+       break;
+     }
+  }
+}
+
+
+
+
+
+
+
+
+Min heap
+=>for every node i, the value of node is greater than or equal to it's
+parent value A[parent(i)] <= A[i] except root node
+
+
+                                 10
+                            /           \
+                          15              19
+                       /     \          /     \
+                      20      30       25       39
+                    /    \    /
+                   23    40   35
+
+
+10 15 19 20 30 25 39 23 40 35
+
+
+
+# Heap and it's identification
+
+#Heap Using STACk
+
+ 1. kth smallest -----> max heap
+ 2. kth largest ----> min heap
+
+
+ kth largest
+ -> taking min heap because we want only largest element so, in min heap
+ smaller element is always on top so, we can eailsy pop that element from stack and rest of
+ element are belonging from largest
+
+ kth smallest-> MAX HEAP
+
+ All heap question are based on sorting
+ merge sort -> (n log n) where n is no of elements
+
+ using heap -> (n log k) where k is size of resultant
+ sorted array in stack
+
+
+ ***
+
+ kth smaller element
+ arr[] 7,10,4,3,20,15
+ k=3
+ sorted 3 4 7 10 15 20
+ 7 will be the answer
+
+ let's try to solve using heap
+ 7,10,4,20,15 k=3
+
+ we want 3rd smallest element
+                              20
+                   10         10
+        10          7          7
+ 7       7          4          4
+
+
+  here k=3 and stack size greater than the 3, so we pop operation perform
+  because in to always max element is present
+
+                              20
+                   10         10        10
+        10          7          7         7
+ 7       7          4          4         4
+
+
+  again perform push operation for last element 15
+
+
+                              20                  15
+                   10         10        10        10
+        10          7          7         7         7
+ 7       7          4          4         4         4
+
+
+  pop the element 15 for maintain size k=3
+                              20
+                   10         10        10        10
+        10          7          7         7         7
+ 7       7          4          4         4         4
+
+
+so here time complexity is (n log k) k=3 sorted array size and n is no
+of elements
+
+
+in c++
+we are using priority-queue for implementation of heap
+
+for max heap:
+priority_queue <int> max;
+
+for min heap
+priority_queue<int, vector<int>, greater(int)> min
+
+
+
+In worst case senario for insertion and deletion it takes o (n log n) where n no. of elements
+
+can we do it for o( n ) ? yes
+
+so we can apply heapify method .
+
+How it's works
+
+          15 [0]
+        /       \
+     20 [1]     7 [2]
+    /    \
+ 9 [3]   30 [4]
+
+
+
+
+
+
+
+
+
+
+
+

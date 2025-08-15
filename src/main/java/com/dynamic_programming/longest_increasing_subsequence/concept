@@ -1,0 +1,63 @@
+
+
+10 9 2 5 3 7 101 18
+this is above array
+we all know what is subsequence
+
+Algo:
+INTEGER length
+function(arr, index, prev_index)
+
+base condition
+if (index==n) return 0;
+
+actual logic
+
+int length = 0 + function(arr, index+1, prev_index)
+
+if(prev_index==-1 || arr[prev_index]>arr[index]){
+length =
+length = max(length, 1+function(arr, index+1, index))
+
+}
+
+return length;
+
+
+now we have to find longest increasing subsequence
+0  1 2 3 4 5 6   7
+10 9 2 5 3 7 101 18
+
+                                 f(0,-1) => where 0 is current index of array and -1 is previous index
+                                 f(10,kuch nhi) => at 0 index array element is 10
+                                 /                 \
+                                /                   \
+                             1 + f(1,0)(9,10)        0 + f(1, -1)(9, kuch nhi)
+                             |
+                             |
+                             here 9 is than 10
+                             so that's why it's
+                             not part of the subsequence
+                             0 + f(2,0)(2,10)
+                             again goes for else
+                             |
+                             |
+                             0 + f(3,0)( 5,10)
+                             |
+                     +1      |
+                             0 + f(4,0)(3,10)
+                             |
+                             |
+                             0 + f(5,0)(7,10)
+                             | here we are getting 1 maximum of both child as well as length vvi
+                             |
+                            0 + f(6,0)(101,10)
+                             here 101 is greater than 10
+                             so it will be part of our index
+                           /       take max value            \
+                          /         from both sub tree        \
+                      1 + f(7,6)(18,101)                         0 + f(7,0) (18,10 )
+                      |                                                    |
+                      |                                                    |
+                      f(8,6) out of index                             1 + f(8,7)
+                      return 0
